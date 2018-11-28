@@ -18,15 +18,15 @@
     }
 
     function init () {
-      getPlayer()
+      getPerson()
     }
 
-    function getPlayer () {
-      window.fetch(`/api/player/${id}`)
+    function getPerson () {
+      window.fetch(`/api/person/${id}`)
         .then(res => res.json())
         .then(res => {
-          const player = res
-          document.getElementById('input-name').value = player.name
+          const person = res
+          document.getElementById('input-name').value = person.name
         })
         .catch(e => console.log(e))
     }
@@ -35,7 +35,7 @@
       const body = {
         name: document.getElementById('input-name').value
       }
-      window.fetch(`/api/player/${id}`, {
+      window.fetch(`/api/person/${id}`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json'

@@ -22,7 +22,7 @@
     }
 
     function getList () {
-      window.fetch('/api/player')
+      window.fetch('/api/person')
         .then(res => res.json())
         .then(res => {
           const list = res
@@ -34,7 +34,7 @@
             nameEl.innerText = l.name
             nameEl.style.cursor = 'pointer'
             nameEl.addEventListener('click', e => {
-              window.location.href = `/player/${l.id}`
+              window.location.href = `/person/${l.id}`
             })
             itemEl.appendChild(nameEl)
 
@@ -52,7 +52,7 @@
     }
 
     function remove (id) {
-      window.fetch(`/api/player/${id}`, {
+      window.fetch(`/api/person/${id}`, {
         method: 'DELETE'
       })
       .then(res => res.json())
@@ -64,7 +64,7 @@
       const body = {
         name: document.getElementById('input-name').value
       }
-      window.fetch('/api/player', {
+      window.fetch('/api/person', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'

@@ -30,7 +30,7 @@ func Init() {
 	db.LogMode(dbConfig.DetailLog)
 	db.DB().SetMaxOpenConns(dbConfig.MaxOpenConns)
 	db.DB().SetMaxIdleConns(dbConfig.MaxIdleConns)
-	db.AutoMigrate(&models.Player{})
+	db.AutoMigrate(&models.Person{})
 	// defer db.Close()
 }
 

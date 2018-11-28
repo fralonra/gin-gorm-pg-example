@@ -6,17 +6,17 @@ import (
 )
 
 func Home(c *gin.Context) {
-	c.Redirect(http.StatusMovedPermanently, "/players")
+	c.Redirect(http.StatusMovedPermanently, "/people")
 }
 
-func PlayersView(c *gin.Context) {
-	c.HTML(http.StatusOK, "players.html", gin.H{
-		"title": "Players",
+func PeopleView(c *gin.Context) {
+	c.HTML(http.StatusOK, "people.html", gin.H{
+		"title": "People",
 	})
 }
 
-func PlayerView(c *gin.Context) {
-	c.HTML(http.StatusOK, "player.html", gin.H{
-		"title": "Player",
+func PersonView(c *gin.Context) {
+	c.HTML(http.StatusOK, "person.html", gin.H{
+		"title": "Person",
 	})
 }
