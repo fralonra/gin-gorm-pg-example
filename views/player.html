@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>{{ .title }}</title>
+</head>
+<body>
+  <input id="input-name" type="text" name="name">
+  <button onclick="submit()">Submit</button>
+  <script>
+    const id = window.location.pathname.split('/').pop()
+    if (document.readyState !== 'loading') {
+      init()
+    } else {
+      document.addEventListener('DOMContentLoaded', init)
+    }
+
+    function init () {
+      getPlayer()
+    }
+
+    function getPlayer () {
+      window.fetch(`/api/player/${id}`)
+        .then(res => res.json())
+        .then(res => {
+          const player = res
+          document.getElementById('input-name').value = player.name
+        })
+        .catch(e => console.log(e))
+    }
+
+    function submit () {
+      const body = {
+        name: document.getElementById('input-name').value
+      }
+      window.fetch(`/api/player/${id}`, {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(body)
+      })
+      .then(res => res.json())
+      .then(res => window.alert('Updated Successfully'))
+      .catch(e => console.log(e))
+    }
+  </script>
+</body>
+</html>
