@@ -9,7 +9,7 @@ func RegisterRouters(router *gin.Engine) {
 	router.GET("/", controllers.Home)
 	router.GET("/people", controllers.PeopleView)
 	router.GET("/person/:id", controllers.PersonView)
-	
+
 	api := router.Group("/api")
 	{
 		person := api.Group("/person")

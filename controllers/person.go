@@ -8,7 +8,6 @@ import (
 	"strconv"
 )
 
-
 func GetPersonAll(c *gin.Context) {
 	var people []models.Person
 	db.GetDb().Find(&people)
@@ -25,13 +24,13 @@ func GetPersonByID(c *gin.Context) {
 func CreatePerson(c *gin.Context) {
 	var person models.Person
 	if err := c.BindJSON(&person); err != nil {
-    c.AbortWithStatusJSON(http.StatusBadRequest, gin.H{
-      "error": err.Error(),
-    })
-    return
-  }
-  db.GetDb().Create(&person)
-  c.JSON(http.StatusOK, &person)
+		c.AbortWithStatusJSON(http.StatusBadRequest, gin.H{
+			"error": err.Error(),
+		})
+		return
+	}
+	db.GetDb().Create(&person)
+	c.JSON(http.StatusOK, &person)
 }
 
 func UpdatePerson(c *gin.Context) {
@@ -39,13 +38,13 @@ func UpdatePerson(c *gin.Context) {
 	id := c.Param("id")
 
 	db := db.GetDb()
-  if err := db.Where("id = ?", id).First(&person).Error; err != nil {
-    c.AbortWithStatus(http.StatusNotFound)
-    return
-  }
-  c.BindJSON(&person)
-  db.Save(&person)
-  c.JSON(http.StatusOK, &person)
+	if err := db.Where("id = ?", id).First(&person).Error; err != nil {
+		c.AbortWithStatus(http.StatusNotFound)
+		return
+	}
+	c.BindJSON(&person)
+	db.Save(&person)
+	c.JSON(http.StatusOK, &person)
 }
 
 func DeletePerson(c *gin.Context) {
@@ -53,8 +52,8 @@ func DeletePerson(c *gin.Context) {
 	id := c.Param("id")
 	if personID, err := strconv.Atoi(id); err != nil {
 		c.AbortWithStatus(http.StatusNotFound)
-    return
-  } else {
+		return
+	} else {
 		person.ID = personID
 	}
 
