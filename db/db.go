@@ -1,8 +1,8 @@
 package db
 
 import (
-	"../config"
-	"../models"
+	"github.com/fralonra/gin-gorm-pg-example/config"
+	"github.com/fralonra/gin-gorm-pg-example/models"
 	"github.com/jinzhu/gorm"
 	_ "github.com/jinzhu/gorm/dialects/postgres"
 	"fmt"

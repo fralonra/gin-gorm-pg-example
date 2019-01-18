@@ -1,7 +1,7 @@
 package routers
 
 import (
-	"../controllers"
+	"github.com/fralonra/gin-gorm-pg-example/controllers"
 	"github.com/gin-gonic/gin"
 )
 

@@ -1,8 +1,8 @@
 package controllers
 
 import (
-	"../db"
-	"../models"
+	"github.com/fralonra/gin-gorm-pg-example/db"
+	"github.com/fralonra/gin-gorm-pg-example/models"
 	"github.com/gin-gonic/gin"
 	"net/http"
 	"strconv"
