@@ -1,0 +1,21 @@
+version: '3.1'
+
+services:
+
+  db:
+    image: postgres
+    restart: always
+    environment:
+      # POSTGRES_DB: postgres # your db
+      # POSTGRES_USER: postgres # your db user
+      POSTGRES_PASSWORD: test # your db password
+    ports:
+      - 5432:5432
+
+  web:
+    build: .
+    depends_on:
+      - db
+    restart: always
+    ports:
+      - 1234:8888

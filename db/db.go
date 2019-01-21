@@ -31,7 +31,7 @@ func Init() {
 	db.DB().SetMaxOpenConns(dbConfig.MaxOpenConns)
 	db.DB().SetMaxIdleConns(dbConfig.MaxIdleConns)
 	db.AutoMigrate(&models.Person{})
-	// defer db.Close()
+	defer db.Close()
 }
 
 func GetDb() *gorm.DB {
